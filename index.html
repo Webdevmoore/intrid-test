@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROM</title>
+  <link rel="icon" type="image/x-icon" href="./assets/icons/logo.ico">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/media-queries.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="flex-column">
+  <div class="open__filters flex-center" onclick="openFilter()">
+    <p>Фильтры</p>
+  </div>
+  <div class="popup__menu flex-center">
+    <div class="menu__container">
+      <div class="menu__close-button" onclick="closeMenu()">
+        <img src="./assets/icons/plus.svg" alt="menu-close-icon">
+      </div>
+      <nav class="menu__nav popup__menu-nav">
+        <a class="menu__item" href="/#">Каталоги производителей</a>
+        <a class="menu__item" href="/#">Оптовым покупателям</a>
+        <a class="menu__item" href="/#">Ремонт и обслуживание</a>
+        <a class="menu__item" href="/#">Гарантии</a>
+        <a class="menu__item" href="/#">О нас</a>
+        <a class="menu__item" href="/#">Новости</a>
+        <a class="menu__item" href="/#">Контакты</a>
+      </nav>
+      <div class="header__catalog-button header__catalog-button-menu flex-center">
+        <div class="button__icon flex-column">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <p class="button__text">Каталог товаров</p>
+      </div>
+      <div class="menu__mini-buttons flex-between">
+        <a class="header__phone header__phone-menu" href="/#">
+          <img class="phone__image" src="./assets/icons/phone.svg" alt="phone">
+        </a>
+        <a class="header__user header__user-menu" href="/#">
+          <img class="user__image" src="./assets/icons/user.svg" alt="user">
+        </a>
+        <a class="header__cart header__cart-menu" href="/#">
+          <img class="cart__image" src="./assets/icons/cart.svg" alt="cart">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="main__filter-popup-wrapper flex-center">
+    <div class="filter__close-button" onclick="closeFilter()">
+      <img src="./assets/icons/plus.svg" alt="menu-close-icon">
+    </div>
+    <div class="main__filter-wrapper main__filter-wrapper-mobile flex-column">
+      <div class="main__filter flex-column">
+        <div class="filter__title-clear flex-between">
+          <h2 class="filter__title">Фильтры</h2>
+          <p class="filter__clear" onclick="closeFilter()">Закрыть</p>
+        </div>
+        <div class="filter__filters">
+
+          <div class="filter__area">
+            <p class="filter__name">Цена, р</p>
+            <div class="filter__slider price__slider">
+              <div class="filter__inputs flex-between">
+                <label>
+                  <p>От</p>
+                  <input type="text" id="price-from-amount2" value="1250">
+                </label>
+                <label>
+                  <p>До</p>
+                  <input type="number" id="price-to-amount2" value="5000">
+                </label>
+              </div>
+              <div class="slider-range" id="price-slider-range2"></div>
+            </div>
+          </div>
+          <div class="filter__area">
+            <p class="filter__name">Наружный диаметр, мм</p>
+            <div class="filter__slider diameter__slider">
+              <div class="filter__inputs flex-between">
+                <label>
+                  <p>От</p>
+                  <input type="text" id="outside-from-amount2" value="0">
+                </label>
+                <label>
+                  <p>До</p>
+                  <input type="number" id="outside-to-amount2" value="1000">
+                </label>
+              </div>
+              <div class="slider-range" id="outside-slider-range2"></div>
+            </div>
+          </div>
+          <div class="filter__area">
+            <p class="filter__name">Внутренный диаметр, мм</p>
+            <div class="filter__slider diameter__slider">
+              <div class="filter__inputs flex-between">
+                <label>
+                  <p>От</p>
+                  <input type="text" id="inside-from-amount2" value="0">
+                </label>
+                <label>
+                  <p>До</p>
+                  <input type="number" id="inside-to-amount2" value="230">
+                </label>
+              </div>
+              <div class="slider-range" id="inside-slider-range2"></div>
+            </div>
+          </div>
+          <div class="filter__area">
+            <p class="filter__name">Ширина, мм</p>
+            <div class="filter__slider diameter__slider">
+              <div class="filter__inputs flex-between">
+                <label>
+                  <p>От</p>
+                  <input type="text" id="width-from-amount2" value="0">
+                </label>
+                <label>
+                  <p>До</p>
+                  <input type="number" id="width-to-amount2" value="3000">
+                </label>
+              </div>
+              <div class="slider-range" id="width-slider-range2"></div>
+            </div>
+          </div>
+          <div class="filter__dropdown flex-column">
+            <div class="dropdown__open-btn flex-between" onclick="toggleDropdown(this)">
+              <img class="dropdown__arrow" src="./assets/icons/down.svg" alt="arrow-down">
+              <p class="filter__name">Бренд</p>
+            </div>
+            <div class="dropdown__content">
+              <input class="content__input" type="text" placeholder="Я ищу..">
+              <div class="dropdown__content-items flex-column">
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="filter__dropdown flex-column">
+            <div class="dropdown__open-btn flex-between" onclick="toggleDropdown(this)">
+              <img class="dropdown__arrow" src="./assets/icons/down.svg" alt="arrow-down">
+              <p class="filter__name">Материал</p>
+            </div>
+            <div class="dropdown__content">
+              <input class="content__input" type="text" placeholder="Я ищу..">
+              <div class="dropdown__content-items flex-column">
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter__buttons flex-between">
+          <div class="primary-button">
+            Применить
+          </div>
+          <div class="filter__clear">
+            Сбросить
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="menu flex-center">
+    <div class="menu-container flex-between">
+      <div class="menu__address flex-between">
+        <img src="./assets/icons/location.svg" alt="location">
+        <p class="menu__address-text">Подольск, Садовая 20</p>
+      </div>
+      <div class="menu__navbar flex-between">
+        <a class="menu__discount" href="/#">Акции</a>
+        <nav class="menu__nav">
+          <a class="menu__item" href="/#">Каталоги производителей</a>
+          <a class="menu__item" href="/#">Оптовым покупателям</a>
+          <a class="menu__item" href="/#">Ремонт и обслуживание</a>
+          <a class="menu__item" href="/#">Гарантии</a>
+          <a class="menu__item" href="/#">О нас</a>
+          <a class="menu__item" href="/#">Новости</a>
+          <a class="menu__item" href="/#">Контакты</a>
+        </nav>
+        <div class="button__icon menu__open-button flex-column" onclick="openMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header class="flex-column">
+    <div class="header__searchbar flex-between">
+      <a class="header__logo" href="/#">
+        <img class="logo__image" src="./assets/icons/logo.svg" alt="page-logo">
+      </a>
+      <div class="header__catalog-button flex-center">
+        <div class="button__icon flex-column">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <p class="button__text">Каталог товаров</p>
+      </div>
+      <div class="searchbar flex-between">
+        <img class="search__icon" src="./assets/icons/search.svg" alt="search">
+        <input class="searchbar__input" type="text" placeholder="Поиск по сайту">
+      </div>
+      <div class="mini__buttons flex-between">
+        <a class="header__phone" href="/#">
+          <img class="phone__image" src="./assets/icons/phone.svg" alt="phone">
+        </a>
+        <a class="header__user" href="/#">
+          <img class="user__image" src="./assets/icons/user.svg" alt="user">
+        </a>
+        <a class="header__cart" href="/#">
+          <img class="cart__image" src="./assets/icons/cart.svg" alt="cart">
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="flex-column">
+    <div class="main__page-path">
+      <p class="page__path"><a href="#" title="На Главную">Главная</a> / Уплотнения</p>
+    </div>
+    <div class="main__page-title">
+      <h1>Уплотнения поршня гидроцилиндров</h1>
+    </div>
+    <div class="main__filter-items flex-between">
+      <div class="main__filter-wrapper flex-column">
+        <div class="main__filter flex-column">
+          <div class="filter__title-clear flex-between">
+            <h2 class="filter__title">Фильтры</h2>
+            <p class="filter__clear">Сбросить</p>
+          </div>
+          <div class="filter__area">
+            <p class="filter__name">Цена, р</p>
+            <div class="filter__slider price__slider">
+              <div class="filter__inputs flex-between">
+                <label>
+                  <p>От</p>
+                  <input type="text" id="price-from-amount" value="1250">
+                </label>
+                <label>
+                  <p>До</p>
+                  <input type="number" id="price-to-amount" value="5000">
+                </label>
+              </div>
+              <div class="slider-range" id="price-slider-range"></div>
+            </div>
+          </div>
+          <div class="filter__area">
+            <p class="filter__name">Наружный диаметр, мм</p>
+            <div class="filter__slider diameter__slider">
+              <div class="filter__inputs flex-between">
+                <label>
+                  <p>От</p>
+                  <input type="text" id="outside-from-amount" value="0">
+                </label>
+                <label>
+                  <p>До</p>
+                  <input type="number" id="outside-to-amount" value="1000">
+                </label>
+              </div>
+              <div class="slider-range" id="outside-slider-range"></div>
+            </div>
+          </div>
+          <div class="filter__area">
+            <p class="filter__name">Внутренный диаметр, мм</p>
+            <div class="filter__slider diameter__slider">
+              <div class="filter__inputs flex-between">
+                <label>
+                  <p>От</p>
+                  <input type="text" id="inside-from-amount" value="0">
+                </label>
+                <label>
+                  <p>До</p>
+                  <input type="number" id="inside-to-amount" value="230">
+                </label>
+              </div>
+              <div class="slider-range" id="inside-slider-range"></div>
+            </div>
+          </div>
+          <div class="filter__area">
+            <p class="filter__name">Ширина, мм</p>
+            <div class="filter__slider diameter__slider">
+              <div class="filter__inputs flex-between">
+                <label>
+                  <p>От</p>
+                  <input type="text" id="width-from-amount" value="0">
+                </label>
+                <label>
+                  <p>До</p>
+                  <input type="number" id="width-to-amount" value="3000">
+                </label>
+              </div>
+              <div class="slider-range" id="width-slider-range"></div>
+            </div>
+          </div>
+          <div class="filter__dropdown flex-column">
+            <div class="dropdown__open-btn flex-between" onclick="toggleDropdown(this)">
+              <img class="dropdown__arrow" src="./assets/icons/down.svg" alt="arrow-down">
+              <p class="filter__name">Бренд</p>
+            </div>
+            <div class="dropdown__content">
+              <input class="content__input" type="text" placeholder="Я ищу..">
+              <div class="dropdown__content-items flex-column">
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Бренд 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="filter__dropdown flex-column">
+            <div class="dropdown__open-btn flex-between" onclick="toggleDropdown(this)">
+              <img class="dropdown__arrow" src="./assets/icons/down.svg" alt="arrow-down">
+              <p class="filter__name">Материал</p>
+            </div>
+            <div class="dropdown__content">
+              <input class="content__input" type="text" placeholder="Я ищу..">
+              <div class="dropdown__content-items flex-column">
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+                <label class="dropdown__content-item flex-between">
+                  <div class="item__title flex-between">
+                    <input type="checkbox">
+                    <p>Материал 1</p>
+                  </div>
+                  <p class="item__count">22</p>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter__buttons flex-between">
+          <div class="primary-button">
+            Применить
+          </div>
+          <div class="filter__clear">
+            Сбросить
+          </div>
+        </div>
+      </div>
+      <div class="main__content flex-column">
+        <div class="content__items">
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/katyol.jpg" title="Котел" alt="Котел">
+              <div class="item__tags new-discount-hit">
+                <div class="item__tag tag__new">Новинка</div>
+                <div class="item__tag tag__discount">Акция</div>
+                <div class="item__tag tag__hit">Хит</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/amortizator.jpg" title="Амортизатор" alt="Амортизатор">
+              <div class="item__tags item__not-available">
+                <div class="item__tag tag__not-available">Нет в наличии</div>
+                <div class="item__tag tag__hit">Хит</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-center">
+                <div class="item__buy-button secondary-button red-button">
+                  Подобрать аналог
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/amortizator2.jpg" title="Амортизатор" alt="Амортизатор">
+              <div class="item__tags">
+                <div class="item__tag tag__new">Новинка</div>
+                <div class="item__tag tag__discount">Акция</div>
+                <div class="item__tag tag__hit">Хит</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/katyol.jpg" title="Котел" alt="Котел">
+              <div class="item__tags discount-hit">
+                <div class="item__tag tag__discount">Акция</div>
+                <div class="item__tag tag__hit">Хит</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/amortizator2.jpg" title="Амортизатор" alt="Амортизатор">
+              <div class="item__tags">
+                <div class="item__tag tag__new">Новинка</div>
+                <div class="item__tag tag__discount">Акция</div>
+                <div class="item__tag tag__hit">Хит</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/gidrocilindr.jpg" title="Гидроцилиндр" alt="Гидроцилиндр">
+              <div class="item__tags new-hit">
+                <div class="item__tag tag__new">Новинка</div>
+                <div class="item__tag tag__hit">Хит</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Гидроцилиндр 4081-4614010 накл</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click item__buy-click-short flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/amortizator3.jpg" title="Амортизатор" alt="Амортизатор">
+              <div class="item__tags tags-discount">
+                <div class="item__tag tag__discount">Акция</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/katyol.jpg" title="Котел" alt="Котел">
+              <div class="item__tags new-discount-hit">
+                <div class="item__tag tag__new">Новинка</div>
+              </div>
+              <div class="item__discount">-5%</div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/katyol.jpg" title="Котел" alt="Котел">
+              <div class="item__tags new-discount-hit">
+                <div class="item__tag tag__new">Новинка</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/amortizator4.jpg" title="Амортизатор" alt="Амортизатор">
+              <div class="item__tags discount-hit">
+                <div class="item__tag tag__discount">Акция</div>
+                <div class="item__tag tag__hit">Хит</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/gidrocilindr.jpg" title="Гидроцилиндр" alt="Гидроцилиндр">
+              <div class="item__tags new-hit">
+                <div class="item__tag tag__hit">Хит</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Гидроцилиндр 4081-4614010 накл</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click item__buy-click-short flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="item__header">
+              <img src="./assets/images/amortizator2.jpg" title="Амортизатор" alt="Амортизатор">
+              <div class="item__tags">
+                <div class="item__tag tag__new">Новинка</div>
+              </div>
+            </div>
+            <div class="item__info">
+              <p class="info__title">Котел газ.нап. BAXI POWER HT 1.1200 (WHS43112060-)</p>
+              <label class="flex-between">
+                <p class="info__label-left">Внутренний диаметр, мм</p>
+                <p class="info__label-right">22</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Наружный диаметр, мм</p>
+                <p class="info__label-right">29.2</p>
+              </label>
+              <label class="flex-between">
+                <p class="info__label-left">Ширина, мм</p>
+                <p class="info__label-right">3.2</p>
+              </label>
+              <div class="item__price flex-between">
+                <p>351 375,25₽</p>
+                <strike>450 875₽</strike>
+              </div>
+              <div class="item__buy-area flex-between">
+                <div class="item__count-select flex-between">
+                  <div class="count__select count__select-minus flex-center">
+                    <img src="./assets/icons/minus.svg" alt="select-count">
+                  </div>
+                  <div class="count__select-count flex-center">1</div>
+                  <div class="count__select count__select-plus flex-center">
+                    <img src="./assets/icons/plus.svg" alt="select-count">
+                  </div>
+                </div>
+                <div class="item__buy-button secondary-button">
+                  В корзину
+                </div>
+              </div>
+              <div class="item__buy-click flex-center">
+                <a href="#">Купить в 1 клик</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content__pagination flex-center">
+          <div class="pagination__wrapper flex-between">
+            <div class="pagination__item pagination__arrow-left flex-center">
+              <img src="./assets/icons/down.svg" alt="arrow-left">
+            </div>
+            <div class="pagination__item pagination__item-active">1</div>
+            <div class="pagination__item">2</div>
+            <div class="pagination__item">3</div>
+            <div class="pagination__item pagination__dots">
+              <img src="./assets/icons/dots.svg" alt="pagination-dots">
+            </div>
+            <div class="pagination__item">12</div>
+            <div class="pagination__item pagination__arrow-right flex-center">
+              <img src="./assets/icons/down.svg" alt="arrow-right">
+            </div>
+          </div>
+        </div>
+        <div class="main__info">
+          <p>
+            Кстати, некоторые особенности внутренней политики представляют собой не что иное, как квинтэссенцию победы
+            маркетинга над разумом и должны быть смешаны с не уникальными данными до степени совершенной неузнаваемости,
+            из-за чего возрастает их статус бесполезности.
+            <br /><br />
+            Банальные, но неопровержимые выводы, а также интерактивные прототипы представлены в исключительно
+            положительном свете. Идейные соображения высшего порядка, а также существующая теория напрямую зависит от
+            вывода текущих активов. Предварительные выводы неутешительны: повышение уровня гражданского сознания не
+            оставляет шанса для форм воздействия. Имеется спорная точка зрения, гласящая примерно следующее: сделанные
+            на базе интернет-аналитики выводы формируют глобальную экономическую сеть и при этом — ассоциативно
+            распределены по отраслям!
+            <br /><br />
+            Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта:
+            семантический разбор внешних противодействий играет определяющее значение для как самодостаточных, так и
+            внешне зависимых концептуальных решений.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="flex-column">
+    <div class="footer__cotainer">
+      <div class="footer__menu-links flex-between">
+        <div class="menu__navbar footer__menu-navbar flex-between">
+          <a class="menu__discount" href="/#">Акции</a>
+          <nav class="menu__nav footer__menu">
+            <a class="menu__item" href="/#">Оптовым покупателям</a>
+            <a class="menu__item" href="/#">Ремонт и обслуживание</a>
+            <a class="menu__item" href="/#">Гарантии</a>
+            <a class="menu__item" href="/#">О нас</a>
+            <a class="menu__item" href="/#">Новости</a>
+            <a class="menu__item" href="/#">Контакты</a>
+          </nav>
+        </div>
+        <div class="footer__menu-address menu__address flex-between">
+          <img src="./assets/icons/location.svg" alt="location">
+          <p class="menu__address-text">Подольск, Садовая 20</p>
+        </div>
+        <div class="footer__menu-clock flex-between">
+          <img src="./assets/icons/clock.svg" alt="clock">
+          <p class="menu__clock-text">с 9:00 до 21:00</p>
+        </div>
+        <div class="footer__social-links flex-between">
+          <a href="#">
+            <img src="./assets/icons/instagram.svg" alt="instagram-icon">
+          </a>
+          <a href="#">
+            <img src="./assets/icons/telegram.svg" alt="telegram-icon">
+          </a>
+          <a href="#">
+            <img src="./assets/icons/facebook.svg" alt="facebook-icon">
+          </a>
+          <a href="#">
+            <img src="./assets/icons/instagram.svg" alt="instagram-icon">
+          </a>
+        </div>
+      </div>
+      <div class="footer__copyrights flex-between">
+        <p>Copyright НГПРом 2022</p>
+        <img src="./assets/images/copyright.jpg" alt="copyright">
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
